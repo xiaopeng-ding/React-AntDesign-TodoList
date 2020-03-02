@@ -15,6 +15,7 @@
         npm i
         或者
         cnpm i
+
     等安装完成后执行
 
         npm run dev便可执行
