@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        onload = function() {
+            const btn = document.getElementById('btn');
+            
+            console.log(this);
+
+            btn.onclick = function() {
+                console.log(this); //这个this是btn这个dom
+                
+                // setTimeout(function () {  //而这个setTimeout函数是windows调用的，所以他里边的this是window
+                //     this.style.backgroundColor = 'red'
+                // }, 1000);
+                setTimeout( () => {  //而这个setTimeout函数是windows调用的，
+                                     //这个时候利用箭头函数让this定位在这个函数外边，也就是btn这个按钮
+                    this.style.backgroundColor = 'red'
+                }, 1000);
+            }
+
+            // btn.onclick = () => {
+            //     console.log(this); //这个this是window，也就是说这个箭头函数的this定位的是箭头函数外面的dom
+            //     this.style.backgroundColor = 'red'
+            // }
+        }
+    </script>
+</body>
+</html>
